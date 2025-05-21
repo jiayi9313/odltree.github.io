@@ -1,0 +1,309 @@
+/* 定义全局变量 */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #f9f9f9;
+    --text-color: #222;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+    --padding: 24px;
+    --transition-time: 0.3s;
+}
+
+/* 通用样式 */
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding-top: 70px; /* 根据导航条的高度调整 */
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color var(--transition-time) ease, text-decoration var(--transition-time) ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.page {
+    display: none;
+    padding: var(--padding);
+    animation: fadeIn var(--transition-time) ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* 链接和按钮的通用样式 */
+a,
+button {
+    transition: background-color var(--transition-time) ease, color var(--transition-time) ease;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: var(--shadow);
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* 导航条样式 */
+.navbar {
+    position: fixed; /* 固定位置 */
+    top: 0; /* 顶部对齐 */
+    width: 100%; /* 宽度占满整个屏幕 */
+    z-index: 1000; /* 确保导航条在其他内容之上 */
+    background-color: var(--primary-color); /* 背景颜色 */
+    padding: 16px 32px; /* 内边距 */
+    box-shadow: var(--shadow); /* 添加阴影效果 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo a {
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin: 0 16px;
+}
+
+.navbar .nav-links a,
+.navbar .auth a {
+    color: #fff;
+    font-size: 18px;
+}
+
+.navbar .nav-links a:hover,
+.navbar .auth a:hover {
+    text-decoration: underline;
+    color: #e0e0e0;
+}
+
+
+
+/* 登录页面样式 */
+#login {
+    display: block;
+}
+
+#login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: var(--padding);
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+#login-form input {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+#login-form a {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+}
+
+/* 注册页面样式 */
+#register {
+    display: block;
+}
+
+#register-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: var(--padding);
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+#register-form input {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+#register-form a {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar .nav-links {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 16px;
+    }
+
+    .navbar .nav-links li {
+        margin: 8px 0;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-item {
+        margin-bottom: 32px;
+    }
+
+    #map-container,
+    #route-planner,
+    #route-list,
+    #passport-info,
+    #passport-interactive,
+    #user-dynamics,
+    #forum,
+    #team,
+    #partners,
+    #contact,
+    #login-form,
+    #register-form {
+        width: 100%;
+    }
+}    
+
+#map {
+    display: flex;
+    flex-direction: row;
+}
+
+#map-container {
+    flex: 3;
+}
+
+#map-sidebar {
+    flex: 1;
+    padding: 10px;
+}
+
+#tree-list div {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#heatmap {
+    height: 200px;
+    /* 热力图样式 */
+}
+
+
+/* 悬浮窗 */
+.floating-window {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none; /* 默认不显示 */
+    z-index: 1000;
+}
+
+.floating-window .header {
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+}
+
+.floating-window .content {
+    padding: 15px;
+}
+
+.floating-window .content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.floating-window .content ul li {
+    margin-bottom: 10px;
+}
+
+.floating-window .content ul li span {
+    font-weight: bold;
+}
+
+.floating-window .content ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.floating-window .content ul li a:hover {
+    text-decoration: underline;
+}
+
+.floating-window .toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 340px;
+    background-color: #7aef9f;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.floating-window .toggle-btn:hover {
+    background-color: #605f59;
+}

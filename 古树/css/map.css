@@ -1,0 +1,97 @@
+/* 页面整体样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* 页面标题样式 */
+.map-title {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0;
+    color: #333;
+    background-color: #fff;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 地图页面布局 */
+.map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+#map {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 600px; /* 增大地图区域高度 */
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* 地图容器样式 */
+#map-container {
+    flex: 4; /* 增大地图区域比例 */
+    border-radius: 8px;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+#gdmap {
+    width: 100%;
+    height: 100%; /* 确保地图填满整个容器 */
+}
+
+/* 侧边栏样式 */
+#map-sidebar {
+    flex: 1; /* 保持侧边栏比例 */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow-y: auto; /* 添加滚动条以适应内容 */
+}
+
+/* 古树列表样式 */
+#tree-list {
+    margin-bottom: 20px;
+}
+
+#tree-list div {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#tree-list div:hover {
+    background-color: #e9e9e9;
+}
+
+/* 热力图样式 */
+#heatmap {
+    height: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin-top: 20px;
+}

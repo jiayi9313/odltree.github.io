@@ -1,0 +1,242 @@
+/* login.css 和 register.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    margin: 0;
+}
+
+.login-container, .register-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+ /* 生长互动容器 */
+	    .growth-container {
+	        max-width: 600px;
+	        margin: 50px auto;
+	        padding: 20px;
+	    }
+	
+	    /* 花园区域 */
+	    .garden-area {
+	        position: relative;
+	        height: 400px;
+	        background: #f8f9fa;
+	        border-radius: 12px;
+	        margin: 20px 0;
+	        overflow: hidden;
+	    }
+	
+	    /* 土壤样式 */
+	    .soil {
+	        position: absolute;
+	        bottom: 0;
+	        width: 100%;
+	        height: 80px;
+	        background: #8D6E63;
+	        box-shadow: inset 0 -10px 20px rgba(0,0,0,0.2);
+	    }
+	
+	    /* 树木生长阶段 */
+	    .tree-stages > div {
+	        position: absolute;
+	        left: 50%;
+	        bottom: 80px;
+	        transform: translateX(-50%);
+	        opacity: 0;
+	        transition: all 0.5s ease;
+	    }
+	
+	    /* 种子样式 */
+	    .seed {
+	        width: 20px;
+	        height: 20px;
+	        background: #8BC34A;
+	        border-radius: 50%;
+	        bottom: 100px !important;
+	    }
+	
+	    /* 树苗样式 */
+	    .sapling {
+	        width: 10px;
+	        height: 80px;
+	        background: #4CAF50;
+	        border-radius: 5px;
+	    }
+	
+	    /* 年轻树木 */
+	    .young-tree {
+	        width: 15px;
+	        height: 180px;
+	        background: #388E3C;
+	        border-radius: 8px;
+	    }
+	
+	    /* 成熟树木 */
+	    .mature-tree {
+	        width: 200px;
+	        height: 300px;
+	        bottom: 80px !important;
+	    }
+	
+	    /* 控制按钮 */
+	    .action-buttons {
+	        display: grid;
+	        grid-template-columns: repeat(4, 1fr);
+	        gap: 10px;
+	        margin: 20px 0;
+	    }
+	
+	    .growth-step {
+	        padding: 12px;
+	        border: none;
+	        border-radius: 8px;
+	        background: #4CAF50;
+	        color: white;
+	        cursor: pointer;
+	        transition: all 0.3s ease;
+	        font-size: 16px;
+	    }
+	
+	    .growth-step:disabled {
+	        background: #81C784;
+	        cursor: not-allowed;
+	        opacity: 0.7;
+	    }
+	
+	    .growth-step.active {
+	        background: #388E3C;
+	        transform: scale(0.95);
+	    }
+	
+	    /* 完成提示 */
+	    .completion-message {
+	        text-align: center;
+	        font-size: 1.2em;
+	        color: #2c3e50;
+	        height: 40px;
+	        opacity: 0;
+	        transition: opacity 1s ease;
+	    }
+	
+	    /* 粒子效果 */
+	    .seed-fall {
+	        position: absolute;
+	        width: 8px;
+	        height: 8px;
+	        background: #8BC34A;
+	        border-radius: 50%;
+	        animation: seedDrop 1s linear;
+	    }
+	
+	    .water-drop {
+	        position: absolute;
+	        width: 6px;
+	        height: 6px;
+	        background: #2196F3;
+	        border-radius: 50% 50% 40% 40%;
+	        animation: waterFall 0.8s linear;
+	    }
+	
+	    .sun-rays {
+	        position: absolute;
+	        width: 100%;
+	        height: 100%;
+	        animation: sunGlow 2s linear;
+	    }
+	
+	    .fertilizer-particle {
+	        position: absolute;
+	        width: 4px;
+	        height: 4px;
+	        background: #FF9800;
+	        border-radius: 50%;
+	        animation: fertilizerSpread 1s ease-out;
+	    }
+	
+	    /* 大树SVG样式 */
+	    .tree-svg {
+	        width: 100%;
+	        height: 100%;
+	        transform-origin: bottom center;
+	    }
+	
+	    /* 动画关键帧 */
+	    @keyframes seedDrop {
+	        0% { transform: translateY(-100px); opacity: 1; }
+	        100% { transform: translateY(0); opacity: 0; }
+	    }
+	
+	    @keyframes waterFall {
+	        0% { transform: translateY(-50px); opacity: 1; }
+	        80% { opacity: 0.8; }
+	        100% { transform: translateY(30px); opacity: 0; }
+	    }
+	
+	    @keyframes sunGlow {
+	        0% { opacity: 0; background: radial-gradient(rgba(255,235,59,0.3) 20%, transparent 60%); }
+	        50% { opacity: 1; }
+	        100% { opacity: 0; }
+	    }
+	
+	    @keyframes fertilizerSpread {
+	        0% { transform: translateY(0); opacity: 1; }
+	        100% { transform: translateY(-50px) rotate(360deg); opacity: 0; }
+	    }
+	
+	    @keyframes treeGrow {
+	        0% { transform: translateX(-50%) scale(0); }
+	        60% { transform: translateX(-50%) scale(1.1); }
+	        100% { transform: translateX(-50%) scale(1); }
+	    }

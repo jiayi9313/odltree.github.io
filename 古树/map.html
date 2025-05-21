@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>古树地图</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/map.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=25e2257481a7d91337fea517b2c5efb5" async defer></script>
+    <!-- 加载地图JSAPI脚本 -->
+    <script src="https://webapi.amap.com/maps?v=2.0&key=25e2257481a7d91337fea517b2c5efb5"></script>
+</head>
+<body>
+     <!-- 导航条 -->
+     <nav class="navbar">
+        <div class="logo">
+            <i class="bi bi-tree-fill tree-icon"></i>
+            <a href="/">湖北大学古树数字“护照”平台</a>
+          </div>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="map.html">古树地图</a></li>
+            <li><a href="routes.html">文化路线</a></li>
+            <li><a href="passport.html">数字护照</a></li>
+            <li><a href="community.html">互动社区</a></li>
+            <li><a href="about.html">关于我们</a></li>
+        </ul>
+    
+        <li class="auth-item">
+            <a href="login.html" data-toggle="tooltip" title="登录" class="icon-link">
+              <i class="bi bi-person-circle"></i>
+            </a>
+            <a href="register.html" data-toggle="tooltip" title="注册" class="icon-link">
+              <i class="bi bi-person-fill-add"></i>
+            </a>
+          </li>
+    </nav>
+
+    <!-- 古树地图页面 -->
+    <div class="map-container">
+        <h2 class="map-title">湖北大学古树地图</h2>
+        <div id="map" class="page">
+            <div id="map-container">
+                <!-- 地图区域 -->
+                <div id="gdmap" style="width: 100%; height: 500px;"></div>
+            </div>
+            <div id="map-sidebar">
+                <!-- 古树列表 -->
+                <div id="tree-list">
+                    <div>古树1</div>
+                    <div>古树2</div>
+                    <div>古树3</div>
+                </div>
+                <!-- 古树时空分布热力图 -->
+                <div id="heatmap"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/gdmap.js"></script>
+</body>
+</html>

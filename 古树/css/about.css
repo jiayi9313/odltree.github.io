@@ -1,0 +1,14 @@
+/* 关于我们样式 */
+#about {
+    display: block;
+}
+
+#team,
+#partners,
+#contact {
+    background-color: #fff;
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+}

@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+/* 浮动窗口样式 */
+.floating-window {
+    width: 300px;
+    background: url("img/树木.jpg") no-repeat center center; /* 替换为你的图片路径 */
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    opacity: 0.9; /* 设置透明度 */
+}
+
+/* 头部样式 */
+.floating-window .header {
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 内容区域样式 */
+.floating-window .content {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+}
+
+.floating-window .content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.floating-window .content ul li {
+    margin-bottom: 10px;
+}
+
+.floating-window .content ul li span {
+    font-weight: bold;
+    color: #333333;
+}
+
+.floating-window .content ul li a {
+    color: #007bff;
+    text-decoration: none;
+    display: block;
+}
+
+.floating-window .content ul li a:hover {
+    text-decoration: underline;
+}

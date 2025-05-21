@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 导航条样式 */
+        /* 导航栏样式调整 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .navbar .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        
+        .navbar .nav-links li {
+            margin: 0 10px;
+        }
+        
+        .navbar .nav-links a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .navbar .auth {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .navbar .auth a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .navbar .auth a:hover {
+            text-decoration: underline;
+        }
+        
+        /* 悬浮窗按钮样式 */
+        .floating-window-toggle-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .floating-window-toggle-btn:hover {
+            background-color: #0056b3;
+        }
+        /* 新增容器 */
+        .main-container {
+            display: flex;
+            margin-top: 70px; /* 为导航条留出空间 */
+            height: calc(100vh - 70px);
+        }
+
+        /* 左侧搜索面板 */
+        .l-search {
+            width: 25%;
+            height: 100%;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 地图容器 */
+        #l-map {
+            width: 75%;
+            height: calc(100vh - 70px) !important; /* 修复高度 */
+            min-height: 500px;
+        }
+
+        /* 修复后的搜索框样式 */
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        /* 路线类型按钮样式 */
+        .route-types {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .route-btn {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #007bff;
+            background: #fff;
+            color: #007bff;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .route-btn.active {
+            background: #007bff;
+            color: white;
+        }
+
+        /* 结果面板样式 */
+        .result-panel {
+            flex: 1;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        /* 修复百度地图信息窗口位置 */
+        .BMap_bubble_content {
+            max-height: 300px !important;
+            overflow-y: auto !important;
+        }
+    </style>
+    <script src="https://api.map.baidu.com/api?v=2.0&ak=nSxiPohfziUaCuONe4ViUP2N"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+
+</head>
+<body>
+    <!-- 导航条 -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="bi bi-tree-fill tree-icon"></i>
+            <a href="/">湖北大学古树数字“护照”平台</a>
+          </div>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="map.html">古树地图</a></li>
+            <li><a href="routes.html">文化路线</a></li>
+            <li><a href="passport.html">数字护照</a></li>
+            <li><a href="community.html">互动社区</a></li>
+            <li><a href="about.html">关于我们</a></li>
+        </ul>
+    
+        <li class="auth-item">
+            <a href="login.html" data-toggle="tooltip" title="登录" class="icon-link">
+              <i class="bi bi-person-circle"></i>
+            </a>
+            <a href="register.html" data-toggle="tooltip" title="注册" class="icon-link">
+              <i class="bi bi-person-fill-add"></i>
+            </a>
+          </li>
+    </nav>
+   
+    
+    <div class="main-container">
+        <!-- 左侧搜索面板 -->
+        <div class="l-search">
+            <input type="text" id="keyword" class="search-box" placeholder="请输入起点位置">
+            <div class="route-types">
+                <button class="route-btn active" data-type="walking">步行</button>
+                <button class="route-btn" data-type="transit">公交</button>
+                <button class="route-btn" data-type="driving">驾车</button>
+            </div>
+            <div id="result-panel" class="result-panel"></div>
+        </div>
+
+        <!-- 右侧地图容器 -->
+        <div id="l-map"></div>
+    </div>
+
+
+<script>
+// 初始化地图
+var map = new BMap.Map("l-map");
+map.centerAndZoom(new BMap.Point(114.334121, 30.57687), 17);
+map.enableScrollWheelZoom(true);
+
+// 创建标记点数组用于管理
+var markers = [];
+
+// 修复路线规划实例
+var walking = new BMap.WalkingRoute(map, {
+    renderOptions: {
+        map: map,
+        panel: "result-panel",
+        autoViewport: true
+    },
+    onSearchComplete: function(results){
+        if (walking.getStatus() == BMAP_STATUS_SUCCESS){
+            var plan = results.getPlan(0);
+            document.getElementById("result-panel").innerHTML = plan.getDescription(true);
+        }
+    }
+});
+
+var transit = new BMap.TransitRoute(map, {
+    renderOptions: {map: map, panel: "result-panel", autoViewport: true}
+});
+
+var driving = new BMap.DrivingRoute(map, {
+    renderOptions: {map: map, panel: "result-panel", autoViewport: true}
+});
+
+// 创建标记点（添加信息窗口）
+function createMarker(point, title) {
+    var marker = new BMap.Marker(point);
+    var infoWindow = new BMap.InfoWindow(title);
+    
+    marker.addEventListener('click', function(e) {
+        this.openInfoWindow(infoWindow);
+        
+        var start = document.getElementById('keyword').value;
+        if (!start) return alert('请先输入起点位置');
+        
+        var routeType = document.querySelector('.route-btn.active').dataset.type;
+        var end = this.getPosition();
+        
+        clearRoute();
+        switch(routeType) {
+            case 'walking': 
+                walking.search(start, end);
+                break;
+            case 'transit': 
+                transit.search(start, end);
+                break;
+            case 'driving': 
+                driving.search(start, end);
+                break;
+        }
+    });
+    
+    map.addOverlay(marker);
+    markers.push(marker); // 将标记点加入数组管理
+}
+
+// 添加示例标注点
+createMarker(new BMap.Point(114.332926, 30.576112), '枫杨·二级·教超1');
+createMarker(new BMap.Point(114.333058, 30.576221), '枫杨·二级·教超2');
+createMarker(new BMap.Point(114.331706, 30.576313), '枫杨·二级·田家炳');
+
+// 路线类型切换
+document.querySelectorAll('.route-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.route-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        clearRoute();
+    });
+});
+
+// 修正后的清除路线方法
+function clearRoute() {
+    // 只清除路线相关覆盖物，保留标记点
+    walking.clearResults();
+    transit.clearResults();
+    driving.clearResults();
+    
+    // 清除非标记点的覆盖物
+    map.getOverlays().forEach(overlay => {
+        if (!markers.includes(overlay) && overlay instanceof BMap.Polyline) {
+            map.removeOverlay(overlay);
+        }
+    });
+}
+
+</script>
+</body>
+</html>

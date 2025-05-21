@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字护照</title>
+    <link rel="stylesheet" type="text/css" href="css/passport.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+</head>
+<body>
+  <!-- 导航条 -->
+  <nav class="navbar">
+    <div class="logo">
+        <i class="bi bi-tree-fill tree-icon"></i>
+        <a href="/">湖北大学古树数字“护照”平台</a>
+      </div>
+    <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="map.html">古树地图</a></li>
+        <li><a href="routes.html">文化路线</a></li>
+        <li><a href="passport.html">数字护照</a></li>
+        <li><a href="community.html">互动社区</a></li>
+        <li><a href="about.html">关于我们</a></li>
+    </ul>
+
+    <li class="auth-item">
+        <a href="login.html" data-toggle="tooltip" title="登录" class="icon-link">
+          <i class="bi bi-person-circle"></i>
+        </a>
+        <a href="register.html" data-toggle="tooltip" title="注册" class="icon-link">
+          <i class="bi bi-person-fill-add"></i>
+        </a>
+      </li>
+</nav>
+    <div class="id-card-container">
+        <h2 style="text-align: center; margin: 40px 0; color: #2c3e50;">古树数字护照</h2>
+        
+        <!-- 古树身份证1 -->
+        <div class="id-card">
+            <div class="tree-photo">
+                <img src="img/教超185.jpg" alt="百年枫杨">
+            </div>
+            <div class="tree-info">
+                <h3 class="tree-title">百年枫杨</h3>
+                <div class="tree-details">
+                    <p><strong>树龄：</strong>100年</p>
+                    <p><strong>位置：</strong>教育超市篮球场旁</p>
+                    <p><strong>胸围：</strong>323厘米</p>
+                    <p><strong>树高：</strong>23米</p>
+                    <p><strong>冠幅：</strong>19米</p>
+                    <span class="status-tag">三级古树名木</span>
+                </div>
+                <img src="img/教程2二级枫杨.png" class="qr-code" alt="数字护照二维码">
+            </div>
+        </div>
+
+        <!-- 古树身份证2 -->
+        <div class="id-card">
+            <div class="tree-photo">
+                <img src="img/田家炳.jpg" alt="田家炳枫杨">
+            </div>
+            <div class="tree-info">
+                <h3 class="tree-title">田家炳枫杨</h3>
+                <div class="tree-details">
+                    <p><strong>树龄：</strong>待鉴定</p>
+                    <p><strong>位置：</strong>田家炳教育学院南侧</p>
+                    <p><strong>胸围：</strong>250厘米</p>
+                    <p><strong>树高：</strong>20米</p>
+                    <p><strong>冠幅：</strong>15米</p>
+                    <span class="status-tag" style="background:#f39c12;">待鉴定</span>
+                </div>
+                <img src="img/田家炳教育学院南侧v.png" class="qr-code" alt="数字护照二维码">
+            </div>
+        </div>
+
+        <!-- 古树身份证3 -->
+        <div class="id-card">
+            <div class="tree-photo">
+                <img src="img/教超待定.jpg" alt="待定古树">
+            </div>
+            <div class="tree-info">
+                <h3 class="tree-title">垂荫·枫杨</h3>
+                <div class="tree-details">
+                    <p><strong>树龄：</strong>90年</p>
+                    <p><strong>位置：</strong>教育超市附近</p>
+                    <p><strong>胸围：</strong>280厘米</p>
+                    <p><strong>树高：</strong>24米</p>
+                    <p><strong>冠幅：</strong>18米</p>
+                    <span class="status-tag" style="background:#e74c3c;">待鉴定</span>
+                </div>
+                <img src="img/教超1二级枫杨v.png" class="qr-code" alt="数字护照二维码">
+            </div>
+        </div>
+    </div>
+	<!-- 树木生长互动区 -->
+	<div class="growth-container">
+	    <h2 style="text-align: center; margin: 40px 0; color: #2c3e50;">培育我的数字树苗</h2>
+	    
+	    <!-- 互动面板 -->
+	    <div class="garden-area">
+	        <!-- 土壤 -->
+	        <div class="soil"></div>
+	        
+	        <!-- 动态树木 -->
+	        <div class="tree-stages">
+	            <div class="seed"></div>
+	            <div class="sapling"></div>
+	            <div class="young-tree"></div>
+	            <div class="mature-tree"></div>
+	        </div>
+	    </div>
+	
+	    <!-- 控制按钮 -->
+	    <div class="action-buttons">
+	        <button class="growth-step" data-step="1">🌱 播种</button>
+	        <button class="growth-step" data-step="2">💧 浇水</button>
+	        <button class="growth-step" data-step="3">☀️ 阳光</button>
+	        <button class="growth-step" data-step="4">🌱 施肥</button>
+	    </div>
+	
+	    <!-- 完成提示 -->
+	    <div class="completion-message"></div>
+	</div>
+	<!-- 树木生长互动区 -->
+	
+	
+	
+	
+    <script src="js/passport.js"></script>
+</body>
+</html>
